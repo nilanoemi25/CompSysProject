@@ -3,6 +3,7 @@ from flask_cors import CORS
 from sense_hat import SenseHat
 import time
 
+
 deviceID="NoemisPi"
 sense = SenseHat()
 sense.clear()
@@ -17,7 +18,7 @@ red = (255, 0, 0)
 
 
 
-# Initial state
+# Initial state of button 
 is_ontime = True
 seconds = time.time()
 result = time.localtime(seconds) 
@@ -41,24 +42,22 @@ def current_environment():
 
 
 @app.route('/sensehat/punctual',methods=['GET'])
-def punctuality_get():
-    #for event in sense.stick.get_events():
-       # if event.action == "pressed":
-           seconds = time.time()
-           #is_ontime = "default"
-           result = time.localtime(seconds) 
-           if result.tm_min > 2 < 30 or result.tm_min > 32 and result.tm_min != 0:
-            is_ontime = False 
-            punctual="Late"
-           else:
-            is_ontime = True
-            punctual ="Ontime"
-            msg = {"deviceID": deviceID,"punctuality":punctual}        
-            return str(msg)+"\n"
+def current_punctual():
+ is_ontime = True
+ seconds = time.time()
+ result = time.localtime(seconds) 
+ if result.tm_min > 2 < 30 or result.tm_min > 32 and result.tm_min != 0:
+    is_ontime = False 
+ if is_ontime:
+    punctual = "Ontime"
+ else:
+    punctual = "Late"
+    msg = {"deviceID": deviceID,"punctual":punctual}
+    return str(msg)+"\n"
+
 
 
 app.run(host='0.0.0.0', port=5000, debug=True)
-
 
 
 # Allow standalone testing of this module
@@ -66,19 +65,23 @@ app.run(host='0.0.0.0', port=5000, debug=True)
     # Example device ID and usage
 
 
+
+
 while True:
     for event in sense.stick.get_events():
-        print(event.direction, event.action) #print released
+        print(event.direction, event.action) 
         if event.action == "pressed":
-
-            print("\nhour:", result.tm_hour) #Instead of printing I want to GET it and then POST it
-            print("minute:", result.tm_min)
-            
+            print("\nhour:", result.tm_hour) 
+            print("minute:", result.tm_min)      
             if is_ontime:
                 sense.show_message("Ontime", text_colour=green)
+                message="Ontime"
             else:
                 sense.show_message("Late", text_colour=red)
-            #is_ontime = not is_ontime
+                message="Late"   
+            
+    
+    time.sleep(30)  # Slight delay to avoid high CPU usage
+    
 
-    time.sleep(0.3)  # Slight delay to avoid high CPU usage
 
