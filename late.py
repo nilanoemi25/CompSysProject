@@ -1,6 +1,8 @@
 from sense_hat import SenseHat
 import time
 
+#somechanges
+
 sense = SenseHat()
 
 # Define colours
