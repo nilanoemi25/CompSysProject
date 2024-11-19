@@ -28,7 +28,7 @@ def get_employee_data(deviceID):
     elif result.tm_hour >= 11 and result.tm_hour < 12:
         employee="John H Watson"
         employeeId="1113"
-    elif result.tm_hour >= 12 and result.tm_hour < 20:
+    elif result.tm_hour >= 12 and result.tm_hour < 19:
         employee="Irene Adler"
         employeeId="1114"
     else:
