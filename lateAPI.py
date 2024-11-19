@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, render_template
 from flask_cors import CORS
 from sense_hat import SenseHat
 import time
@@ -16,8 +16,6 @@ CORS(app)
 green = (0, 255, 0)  
 red = (255, 0, 0)    
 
-
-
 # Initial state of button 
 is_ontime = True
 seconds = time.time()
@@ -27,18 +25,20 @@ if result.tm_min > 2 < 30 or result.tm_min > 32 and result.tm_min != 0:
 
 sense.clear()  
 
+
 @app.route('/sensehat/environment',methods=['GET'])
 def current_environment():
     temperature=round(sense.temperature,2)
     humidity=round(sense.humidity,2)
     flag="default"
     if humidity > 90 and temperature < 20:
-     flag = "It's probably raining."
+     flag = "It's probably raining today."
     else:
-     flag = "The weather looks good."
+     flag = "The weather looks good today."
 
     msg = {"deviceID": deviceID,"temp":temperature,"humidity":humidity,"weather_conditions":flag}
-    return str(msg)+"\n"
+    #return str(msg)+"\n"
+    return render_template('environment.html', temperature=temperature, humidity=humidity, flag=flag)
 
 
 @app.route('/sensehat/punctual',methods=['GET'])
@@ -49,12 +49,30 @@ def current_punctual():
  if result.tm_min > 2 < 30 or result.tm_min > 32 and result.tm_min != 0:
     is_ontime = False 
  if is_ontime:
-    punctual = "Ontime"
+    status = "Ontime"
  else:
-    punctual = "Late"
-    msg = {"deviceID": deviceID,"punctual":punctual}
-    return str(msg)+"\n"
+    status = "Late"
+    msg = {"deviceID": deviceID,"is_ontime":is_ontime,"punctual":status}
+    #return str(msg)+"\n"
+    return render_template('punctual.html', is_ontime=is_ontime, status=status)
 
+@app.route('/sensehat/punctualpost',methods=['POST'])
+def message_post():
+    state=request.args.get('is_ontime')
+    print (state)
+    if (state=="True"):
+        sense.show_message("Ontime", text_colour=green)
+        return '{"state":"True"}'
+    else: 
+        sense.show_message("Late", text_colour=red)
+        return '{"state":"False"}'
+
+
+@app.route('/') 
+def index():
+    celcius = round(sense.temperature, 2)
+    humidity = round(sense.humidity,2)
+    return render_template('index.html', celcius=celcius, humidity=humidity)
 
 
 app.run(host='0.0.0.0', port=5000, debug=True)
@@ -63,8 +81,6 @@ app.run(host='0.0.0.0', port=5000, debug=True)
 # Allow standalone testing of this module
 #if __name__ == "__main__":
     # Example device ID and usage
-
-
 
 
 while True:
