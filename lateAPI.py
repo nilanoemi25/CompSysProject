@@ -20,12 +20,13 @@ red = (255, 0, 0)
 is_ontime = True
 seconds = time.time()
 result = time.localtime(seconds) 
-if result.tm_min > 2 < 30 or result.tm_min > 32 and result.tm_min != 0:
-    is_ontime = False 
+if result.tm_min > 2 and result.tm_min < 45 and result.tm_min != 0:
+        is_ontime = False 
+    
 
 sense.clear()  
 
-
+"""
 @app.route('/sensehat/environment',methods=['GET'])
 def current_environment():
     temperature=round(sense.temperature,2)
@@ -81,7 +82,7 @@ app.run(host='0.0.0.0', port=5000, debug=True)
 # Allow standalone testing of this module
 #if __name__ == "__main__":
     # Example device ID and usage
-
+""" 
 
 while True:
     for event in sense.stick.get_events():
@@ -97,7 +98,7 @@ while True:
                 message="Late"   
             
     
-    time.sleep(30)  # Slight delay to avoid high CPU usage
+    time.sleep(16)  # Slight delay to avoid high CPU usage
     
 
 
