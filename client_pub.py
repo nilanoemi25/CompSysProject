@@ -1,10 +1,13 @@
 #!/usr/bin/python3
-
+from sense_hat import SenseHat
+import requests
 import paho.mqtt.client as mqtt
 from urllib.parse import urlparse
 import time
 from employee_data import get_employee_data
 
+sense = SenseHat()
+sense.clear()
 
 # parse mqtt url for connection details. DON'T FORGET TO UPDATE YOUR_ID TO A UNIQUE ID
 URL = urlparse("mqtt://broker.emqx.io:1883/nilanoemi25/home")
@@ -41,8 +44,13 @@ if (URL.username):
 mqttc.connect(URL.hostname, URL.port)
 mqttc.loop_start()
 
-# Publish a message to temp every 15 seconds
+# Publish a message to only when the button is pressed on Rasberry Pi
 while True:
-    msgFromClient = get_employee_data(DEVICE_ID)
-    mqttc.publish(f"{BASE_TOPIC}/environment",str(msgFromClient))
+   
+    for event in sense.stick.get_events():
+        print(event.direction, event.action) 
+        if event.action == "pressed":
+            msgFromClient = get_employee_data(DEVICE_ID)
+            mqttc.publish(f"{BASE_TOPIC}/environment",str(msgFromClient))
+
     time.sleep(15)
