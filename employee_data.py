@@ -8,9 +8,9 @@ def get_employee_data(deviceID):
     # Retrieve temperature and humidity
     temp = sense.get_temperature()
     humidity = sense.get_humidity()
-    
+
     flag="default"
-    if humidity > 90 and temp < 20:
+    if humidity > 50 and temp < 20:
      flag = "It's probably raining today.Employees may be late due to adverse weather conditions."
     else:
      flag = "The weather looks good today. Employees have no excuse to be late."
@@ -28,14 +28,14 @@ def get_employee_data(deviceID):
     elif result.tm_hour >= 11 and result.tm_hour < 12:
         employee="John H Watson"
         employeeId="1113"
-    elif result.tm_hour >= 12 and result.tm_hour < 19:
+    elif result.tm_hour >= 12 and result.tm_hour < 13:
         employee="Irene Adler"
         employeeId="1114"
     else:
         employee="Could be anyone"
         employeeId="9999"
 
-    if result.tm_min > 2 and result.tm_min < 45 and result.tm_min != 0:
+    if result.tm_min > 3 and result.tm_min < 59 and result.tm_min != 0:
         is_ontime = False 
     
     # Create a dictionary
@@ -46,7 +46,8 @@ def get_employee_data(deviceID):
         "employee": employee,
         "employeeId": employeeId,
         "weather_condition": flag,
-        "time_keeping": is_ontime
+        "time_keeping": is_ontime,
+        
     }
     
     return data

@@ -3,7 +3,13 @@ import requests
 import time
 from employee_data import get_employee_data
 
+deviceID="NoemisPi"
 sense = SenseHat()
+sense.clear()
+
+# Define colours
+green = (0, 255, 0)  
+red = (255, 0, 0)    
 
 # ThingSpeak settings
 THINGSPEAK_WRITE_API_KEY = "YQ2PNEN438H27L0G"
@@ -19,7 +25,6 @@ def send_to_thingspeak(temperature,humidity,weather_condition,employeeId,employe
         'field4': employeeId,
         'field5': employee,
         'field6': is_ontime,
-
     }
   
     response = requests.get(THINGSPEAK_CHANNEL_URL, params=payload)
@@ -31,31 +36,43 @@ def send_to_thingspeak(temperature,humidity,weather_condition,employeeId,employe
    
 
 while True:
-    # Read temperature and humidity from Sense HAT
-    temperature = round(sense.get_temperature(),2)
-    humidity=round(sense.humidity,2)
-    is_ontime = True
-    seconds = time.time()
-    result = time.localtime(seconds) 
-    if result.tm_min > 2 and result.tm_min < 45 and result.tm_min != 0:
-        is_ontime = False 
+ 
+    for event in sense.stick.get_events():
+        print(event.direction, event.action) 
+        if event.action == "pressed":
+         deviceId= "anydevice"
+         data = get_employee_data(deviceId)
+         temperature = data['temp']
+         humidity = data['humidity']
+         employeeId = data['employeeId']
+         employee = data['employee']
+         is_ontime = data['time_keeping']
+         weather_condition = data['weather_condition']
 
-    deviceId= "anydevice"
-    data = get_employee_data(deviceId)
-    employeeId = data['employeeId']
-    employee = data['employee']
-    weather_condition = data['weather_condition']
-    
-    print(f"Temperature: {temperature} C")
-    print(f"Humidity: {humidity} ")
-    print(f"Time Keeping: {is_ontime} ")
-    print(f"EmpId: {employeeId} ")
-    print(f"Emp: {employee} ")
-    print(f"WeatherCondition: {weather_condition} ")
-   
+        # print("\nhour:", result.tm_hour) 
+        # print("minute:", result.tm_min)      
+         print(f"Temperature: {temperature} C")
+         print(f"Humidity: {humidity} ")
+         print(f"Time Keeping: {is_ontime} ")
+         print(f"EmpId: {employeeId} ")
+         print(f"Emp: {employee} ")
+         print(f"WeatherCondition: {weather_condition} ")
 
-    # Send the data to ThingSpeak
-    send_to_thingspeak(temperature,humidity,weather_condition,employeeId,employee,is_ontime)
+         if is_ontime:
+                message=f"{employee} Ontime"
+                sense.show_message(message, text_colour=green)               
+         else:
+                message=f"{employee} Late"   
+                sense.show_message(message, text_colour=red)
 
-    # Wait before the next reading (ThingSpeak recommends 15-second intervals for free accounts)
-    time.sleep(16)
+        # Send the data to ThingSpeak
+         send_to_thingspeak(temperature,humidity,weather_condition,employeeId,employee,is_ontime)   
+        
+        elif event.action == "released":
+         print("Action complete")
+
+      
+
+    # Wait before the next reading 
+    time.sleep(16)     
+            
