@@ -26,7 +26,7 @@ if result.tm_min > 2 and result.tm_min < 45 and result.tm_min != 0:
 
 sense.clear()  
 
-"""
+
 @app.route('/sensehat/environment',methods=['GET'])
 def current_environment():
     temperature=round(sense.temperature,2)
@@ -57,6 +57,7 @@ def current_punctual():
     #return str(msg)+"\n"
     return render_template('punctual.html', is_ontime=is_ontime, status=status)
 
+#sensehat/punctualpost?is_ontime=True
 @app.route('/sensehat/punctualpost',methods=['POST'])
 def message_post():
     state=request.args.get('is_ontime')
@@ -82,8 +83,8 @@ app.run(host='0.0.0.0', port=5000, debug=True)
 # Allow standalone testing of this module
 #if __name__ == "__main__":
     # Example device ID and usage
-""" 
 
+"""
 while True:
     for event in sense.stick.get_events():
         print(event.direction, event.action) 
@@ -101,4 +102,4 @@ while True:
     time.sleep(16)  # Slight delay to avoid high CPU usage
     
 
-
+""" 
