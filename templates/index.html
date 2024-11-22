@@ -3,12 +3,49 @@
 <html>
 
 <head>
+    <style>
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: lightpink;
+           }
+
+        li {
+              float: left;
+            }
+
+        li a {
+         display: block;
+         text-align: center;
+         padding: 14px 16px;
+         text-decoration: none;
+            }
+
+
+        li a:hover {
+         background-color: #111;
+         }
+         
+         p{
+            font-size: small;
+         }
+        </style>
+
     <title> Assignment </title>
     <link href="https://cdn.jsdelivr.net/npm/spcss@0.9.0" rel="stylesheet" type="text/css"/>
    <!-- https://github.com/susam/spcss --> 
 </head>
 
 <body>
+
+    <ul>
+        <li><a href="/"> Index </a></li>
+        <li><a href="sensehat/environment"> Environment Details</a></li>
+        <li><a href="sensehat/punctual"> Time Keeping </a></li>
+      </ul> 
+
     <h1>Noemi'sPi Environment Data Summary</h1>
 
     <h2>Temperature</h2>
@@ -16,7 +53,7 @@
     <p><strong>Humidity:</strong> {{ humidity }}</p>
 
     <h2>API Description</h2>
-    <p>For use by developers...</p>
+    <p>For use by developers... Index is found at root "/" </p>
     <table>
         <thead>
             <tr>
@@ -28,17 +65,37 @@
         <tbody>
             <tr>
                 <td>/sensehat/environment</td>
-                <td>Current environment data</td>
+                <td>Current environment data (temperature and humidity) Logic in background to determine if weather conditions are good/bad</td>
                 <td>Not Used</td>
             </tr>
             <tr>
                 <td>/sensehat/punctual</td>
-                <td>Current time stamp (ontime/late)</td>
-                <td> TO DO  <br>
-                    TO DO </td>
+                <td>Current time stamp (ontime/late) Logic in background to determine if employee is on time (on the hour) or late ( 3 minutes grace applied).</td>
+                <td>  </td>
             </tr>
+            <tr>
+                <td>/sensehat/punctualpost</td>
+                <td>  </td>
+                <td> Used to post payload 'is_ontime' with boolean True or False. Will actuate a show message on Rasb Pi with Ontime/Late </td>
+            </tr>
+            <tr>
+                <td>/sensehat/greenlight</td>
+                <td>  </td>
+                <td> Used to actuate a green light on Rasb Pi when employee walks past motion sensor. (Packet Tracer) The exact time is returned to terminal. </td>
+            </tr>
+         
         </tbody>
     </table>
 </body>
+<footer>
+    <hr>
+    <p>
+    This page belongs to Noemi Lovei and Comp Sys Assignment 2024.
+    <br>
+    <hr>
+
+   </p>
+</footer>
+
 
 </html>

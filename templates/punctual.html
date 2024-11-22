@@ -3,18 +3,61 @@
 <html>
 
 <head>
+    <style>
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: lightpink;
+           }
+
+        li {
+              float: left;
+            }
+
+        li a {
+         display: block;
+         text-align: center;
+         padding: 14px 16px;
+         text-decoration: none;
+            }
+
+
+        li a:hover {
+         background-color: #111;
+         }
+        </style>
+
     <title> Assignment </title>
     <link href="https://cdn.jsdelivr.net/npm/spcss@0.9.0" rel="stylesheet" type="text/css"/>
    <!-- https://github.com/susam/spcss --> 
 </head>
 
 <body>
+    <ul>
+        <li><a href="/"> Index </a></li>
+        <li><a href=""> Environment Details</a></li>
+        <li><a href=""> Time Keeping </a></li>
+      </ul> 
+     <h6> You must return to index </h6>
+     <p> Each time you press 'Time Keeping' current details are generated ! </p>
+
     <h1>Noemi'sPi Environment Data Summary</h1>
 
     <h2>Time Keeping </h2>
     <p><strong>Ontime:</strong> {{ is_ontime }}</p>
     <p><strong>Time Keeping:</strong> {{ status }}</p>
 
+    <footer>
+        <hr>
+        <p>
+        This page belongs to Noemi Lovei and Comp Sys Assignment 2024.
+        <br>
+        <hr>
+    
+       </p>
+    </footer>
 </body>
 
 </html>
