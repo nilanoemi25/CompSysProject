@@ -1,6 +1,8 @@
 from sense_hat import SenseHat
 import requests
 import time
+import sys 
+sys.path.insert(0, '../')
 from employee_data import get_employee_data
 
 deviceID="NoemisPi"
@@ -48,9 +50,7 @@ while True:
          employee = data['employee']
          is_ontime = data['time_keeping']
          weather_condition = data['weather_condition']
-
-        # print("\nhour:", result.tm_hour) 
-        # print("minute:", result.tm_min)      
+  
          print(f"Temperature: {temperature} C")
          print(f"Humidity: {humidity} ")
          print(f"Time Keeping: {is_ontime} ")

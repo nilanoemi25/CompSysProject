@@ -4,6 +4,8 @@ import requests
 import paho.mqtt.client as mqtt
 from urllib.parse import urlparse
 import time
+import sys 
+sys.path.insert(0, '../')
 from employee_data import get_employee_data
 
 sense = SenseHat()
