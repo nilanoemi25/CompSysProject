@@ -30,23 +30,23 @@ Next to the RFID reader and the entrance there is also a motion sensor. ( must b
 The idea is that when the employee walks in the door (IOT Manager fully set up in Packet Tracer), having successfully passed through the RFID validation the motion sensor actuates the Raspberry PI, which will light up in green AND print all relevant information (temp, humidity, employeeName, employeeId, **currentime stamp**, late/ontime) to the terminal, using the POST API. 
 
 The restAPIs trigger different websites, styled with some CSS, logically diving the data that was gathered from the Raspberry PI.
-1./
-2./sensehat/environment
-3./sensehat/punctual
-4./sensehat/punctualpost
-5./sensehat/greenlight
+/<br>
+/sensehat/environment<br>
+/sensehat/punctual<br>
+/sensehat/punctualpost<br>
+/sensehat/greenlight<br>
 
 
 
 ## Tools, Technologies and Equipment
-+Rasberry Pi 5
-+Sensehat
-+Packet Tracer
-+Python 
-+HTML 
-+MQTT and MQTT app 
-+HTTP
-+Thingspeak 
++Rasberry Pi 5<br>
++Sensehat<br>
++Packet Tracer<br>
++Python <br>
++HTML <br>
++MQTT and MQTT app <br>
++HTTP<br>
++Thingspeak <br>
 +Blynk - to do - probably not due to installation issues with Python 
 
 ## Project Repository
