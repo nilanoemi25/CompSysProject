@@ -1,13 +1,17 @@
 from sense_hat import SenseHat
+from camera_test import capture_image
 import requests
 import time
 import sys 
 sys.path.insert(0, '../')
 from employee_data import get_employee_data
 
+
 deviceID="NoemisPi"
 sense = SenseHat()
 sense.clear()
+IMAGE_PATH="../images/sensehat_image.jpg"
+
 
 # Define colours
 green = (0, 255, 0)  
@@ -42,6 +46,9 @@ while True:
     for event in sense.stick.get_events():
         print(event.direction, event.action) 
         if event.action == "pressed":
+         capture_image(IMAGE_PATH)
+         print("Image captured using SenseHAT button!")
+    
          deviceId= "anydevice"
          data = get_employee_data(deviceId)
          temperature = data['temp']
@@ -72,7 +79,6 @@ while True:
          print("Action complete")
 
       
-
     # Wait before the next reading 
     time.sleep(16)     
             
