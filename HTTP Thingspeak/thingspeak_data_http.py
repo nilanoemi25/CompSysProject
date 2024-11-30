@@ -1,10 +1,10 @@
 from sense_hat import SenseHat
-from camera_test import capture_image
-import requests
-import time
 import sys 
 sys.path.insert(0, '../')
+import requests
+import time
 from employee_data import get_employee_data
+from camera_test import capture_image
 
 
 deviceID="NoemisPi"
