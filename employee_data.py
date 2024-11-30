@@ -1,5 +1,6 @@
 from sense_hat import SenseHat
 import time
+from datetime import datetime
 
 def get_employee_data(deviceID):
     # Initialize SenseHAT
@@ -16,6 +17,9 @@ def get_employee_data(deviceID):
      flag = "The weather looks good today. Employees have no excuse to be late."
 
     #Lets say that Sherlock starts at 9 am, James at 10 am, John at 11am and Irene at 12 noon
+    current_time = datetime.now()
+    current_time_pretty = f"Photo taken at {current_time:%H:%M}"
+    photo_published = True
     is_ontime = True
     seconds = time.time()
     result = time.localtime(seconds) 
@@ -62,6 +66,8 @@ def get_employee_data(deviceID):
         "employeeId": employeeId,
         "weather_condition": flag,
         "time_keeping": is_ontime,
+        "current_time": current_time_pretty,
+        "photo_published": photo_published 
         
     }
     
