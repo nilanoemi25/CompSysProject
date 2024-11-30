@@ -5,7 +5,7 @@ import requests
 import time
 from employee_data import get_employee_data
 from camera_test import capture_image
-
+from upload_image import upload_image
 
 deviceID="NoemisPi"
 sense = SenseHat()
@@ -48,6 +48,7 @@ while True:
         if event.action == "pressed":
          capture_image(IMAGE_PATH)
          print("Image captured using SenseHAT button!")
+         upload_image(IMAGE_PATH)
     
          deviceId= "anydevice"
          data = get_employee_data(deviceId)
