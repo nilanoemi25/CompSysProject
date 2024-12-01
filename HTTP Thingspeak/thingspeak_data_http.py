@@ -66,7 +66,7 @@ while True:
          print(f"EmpId: {employeeId} ")
          print(f"Emp: {employee} ")
          print(f"WeatherCondition: {weather_condition} ")
-         print(urlString)
+         
 
          if is_ontime:
                 message=f"{employee} Ontime"

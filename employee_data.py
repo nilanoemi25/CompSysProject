@@ -2,12 +2,16 @@ from sense_hat import SenseHat
 import time
 from datetime import datetime
 from upload_image import upload_image
+import json
+import emp_db 
 
 IMAGE_PATH="../images/sensehat_image.jpg"
 
 def get_employee_data(deviceID):
     # Initialize SenseHAT
     sense = SenseHat()
+     
+    
     
     # Retrieve temperature and humidity
     temp = sense.get_temperature()
@@ -78,3 +82,8 @@ def get_employee_data(deviceID):
     }
     
     return data
+
+if __name__ == "__main__":
+    get_employee_data("anydeviceId")
+    data = get_employee_data("anydeviceId")
+    print(data)
