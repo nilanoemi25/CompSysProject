@@ -1,6 +1,9 @@
 from sense_hat import SenseHat
 import time
 from datetime import datetime
+from upload_image import upload_image
+
+IMAGE_PATH="../images/sensehat_image.jpg"
 
 def get_employee_data(deviceID):
     # Initialize SenseHAT
@@ -20,6 +23,8 @@ def get_employee_data(deviceID):
     current_time = datetime.now()
     current_time_pretty = f"Photo taken at {current_time:%H:%M}"
     photo_published = True
+    urlString = upload_image(IMAGE_PATH)
+
     is_ontime = True
     seconds = time.time()
     result = time.localtime(seconds) 
@@ -67,7 +72,8 @@ def get_employee_data(deviceID):
         "weather_condition": flag,
         "time_keeping": is_ontime,
         "current_time": current_time_pretty,
-        "photo_published": photo_published 
+        "photo_published": photo_published,
+        "URL": urlString
         
     }
     

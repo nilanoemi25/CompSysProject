@@ -41,13 +41,14 @@ The restAPIs trigger different websites, styled with some CSS, logically diving 
 ## Tools, Technologies and Equipment
 +Rasberry Pi 5<br>
 +Sensehat<br>
++Camera <br>
 +Packet Tracer<br>
 +Python <br>
 +HTML <br>
 +MQTT and MQTT app <br>
 +HTTP<br>
 +Thingspeak <br>
-+Blynk - to do - probably not due to installation issues with Python 
+ 
 
 ## Project Repository
 https://github.com/nilanoemi25/CompSysProject/tree/main 

@@ -31,6 +31,7 @@ def send_to_thingspeak(temperature,humidity,weather_condition,employeeId,employe
         'field4': employeeId,
         'field5': employee,
         'field6': is_ontime,
+
     }
   
     response = requests.get(THINGSPEAK_CHANNEL_URL, params=payload)
@@ -49,7 +50,7 @@ while True:
          capture_image(IMAGE_PATH)
          print("Image captured using SenseHAT button!")
          upload_image(IMAGE_PATH)
-    
+         
          deviceId= "anydevice"
          data = get_employee_data(deviceId)
          temperature = data['temp']
@@ -65,6 +66,7 @@ while True:
          print(f"EmpId: {employeeId} ")
          print(f"Emp: {employee} ")
          print(f"WeatherCondition: {weather_condition} ")
+         print(urlString)
 
          if is_ontime:
                 message=f"{employee} Ontime"
