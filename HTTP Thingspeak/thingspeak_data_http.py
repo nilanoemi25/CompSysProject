@@ -13,7 +13,7 @@ sense.clear()
 IMAGE_PATH="../images/sensehat_image.jpg"
 
 
-# Define colours
+# Define colours for SBC
 green = (0, 255, 0)  
 red = (255, 0, 0)    
 
@@ -22,7 +22,7 @@ THINGSPEAK_WRITE_API_KEY = "YQ2PNEN438H27L0G"
 THINGSPEAK_CHANNEL_URL = "https://api.thingspeak.com/update"
 
 # Function to send data to ThingSpeak
-def send_to_thingspeak(temperature,humidity,weather_condition,employeeId,employee,is_ontime):
+def send_to_thingspeak(temperature,humidity,weather_condition,employeeId,employee,is_ontime, urlString):
     payload = {
         'api_key': THINGSPEAK_WRITE_API_KEY,
         'field1': temperature,
@@ -30,7 +30,8 @@ def send_to_thingspeak(temperature,humidity,weather_condition,employeeId,employe
         'field3': weather_condition,
         'field4': employeeId,
         'field5': employee,
-        'field6': is_ontime,
+        'field6': is_ontime, 
+        'field7': urlString,
 
     }
   
@@ -48,9 +49,10 @@ while True:
         print(event.direction, event.action) 
         if event.action == "pressed":
          capture_image(IMAGE_PATH)
-         print("Image captured using SenseHAT button!")
-         upload_image(IMAGE_PATH)
-         
+         print("Image captured using SenseHAT button")
+         url = str(upload_image(IMAGE_PATH))
+         urlString = url.replace("http://", "hxxp://") #Changing URL to allow it to upload to Thingspeak, CSV file, field 7
+
          deviceId= "anydevice"
          data = get_employee_data(deviceId)
          temperature = data['temp']
@@ -66,6 +68,7 @@ while True:
          print(f"EmpId: {employeeId} ")
          print(f"Emp: {employee} ")
          print(f"WeatherCondition: {weather_condition} ")
+         print(f"URL: {urlString} ")
          
 
          if is_ontime:
@@ -76,12 +79,12 @@ while True:
                 sense.show_message(message, text_colour=red)
 
         # Send the data to ThingSpeak
-         send_to_thingspeak(temperature,humidity,weather_condition,employeeId,employee,is_ontime)   
+         send_to_thingspeak(temperature,humidity,weather_condition,employeeId,employee,is_ontime, urlString)   
         
         elif event.action == "released":
          print("Action complete")
 
       
     # Wait before the next reading 
-    time.sleep(16)     
+    time.sleep(15)     
             
