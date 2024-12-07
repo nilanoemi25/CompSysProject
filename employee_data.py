@@ -3,6 +3,9 @@ import time
 from datetime import datetime
 from upload_image import upload_image
 import json
+import BlynkLib
+
+#Lets say that Sherlock starts at 9 am, James at 10 am, John at 11am and Irene at 12 noon etc 
 
 emp_db = ''' { 
        "employees": [
@@ -61,7 +64,13 @@ emp_db = ''' {
               
 
 
+
+
+# Blynk authentication token
+BLYNK_AUTH = 'z275UI1-xYpfjeR4JM-TroJ1R4l28_HN'
 IMAGE_PATH="../images/sensehat_image.jpg"
+# Initialise the Blynk instance
+blynk = BlynkLib.Blynk(BLYNK_AUTH)
 
 def get_employee_data(deviceID):
     # Initialize SenseHAT
@@ -80,11 +89,12 @@ def get_employee_data(deviceID):
     else:
      flag = "The weather looks good today. Employees have no excuse to be late."
 
-    #Lets say that Sherlock starts at 9 am, James at 10 am, John at 11am and Irene at 12 noon etc 
     current_time = datetime.now()
     current_time_pretty = f"Photo taken at {current_time:%H:%M}"
     url = str(upload_image(IMAGE_PATH))
     urlString = url.replace("http://", "hxxp://") #Changing URL to allow it to upload to Thingspeak, CSV file, field 7
+
+    blynk.set_property(4,"urls", url)
 
     is_ontime = True
     seconds = time.time()
