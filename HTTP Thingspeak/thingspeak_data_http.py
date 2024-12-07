@@ -50,8 +50,6 @@ while True:
         if event.action == "pressed":
          capture_image(IMAGE_PATH)
          print("Image captured using SenseHAT button")
-         url = str(upload_image(IMAGE_PATH))
-         urlString = url.replace("http://", "hxxp://") #Changing URL to allow it to upload to Thingspeak, CSV file, field 7
 
          deviceId= "anydevice"
          data = get_employee_data(deviceId)
@@ -61,6 +59,7 @@ while True:
          employee = data['employee']
          is_ontime = data['time_keeping']
          weather_condition = data['weather_condition']
+         urlString=data['URL']
   
          print(f"Temperature: {temperature} C")
          print(f"Humidity: {humidity} ")

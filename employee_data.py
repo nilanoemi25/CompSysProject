@@ -1,7 +1,7 @@
 from sense_hat import SenseHat
 import time
 from datetime import datetime
-#from upload_image import upload_image
+from upload_image import upload_image
 import json
 
 emp_db = ''' { 
@@ -83,8 +83,8 @@ def get_employee_data(deviceID):
     #Lets say that Sherlock starts at 9 am, James at 10 am, John at 11am and Irene at 12 noon etc 
     current_time = datetime.now()
     current_time_pretty = f"Photo taken at {current_time:%H:%M}"
-    #photo_published = True
-    #urlString = upload_image(IMAGE_PATH)
+    url = str(upload_image(IMAGE_PATH))
+    urlString = url.replace("http://", "hxxp://") #Changing URL to allow it to upload to Thingspeak, CSV file, field 7
 
     is_ontime = True
     seconds = time.time()
@@ -133,8 +133,7 @@ def get_employee_data(deviceID):
         "weather_condition": flag,
         "time_keeping": is_ontime,
         "current_time": current_time_pretty,
-        #"photo_published": photo_published,
-        #"URL": urlString,
+        "URL": urlString,
         
     }
     

@@ -4,6 +4,7 @@ from sense_hat import SenseHat
 import time
 from employee_data import get_employee_data
 
+#curl -X POST "http://IP:PORT/"
 
 deviceID="NoemisPi"
 sense = SenseHat()

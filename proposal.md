@@ -48,6 +48,7 @@ The restAPIs trigger different websites, styled with some CSS, logically diving 
 +MQTT and MQTT app <br>
 +HTTP<br>
 +Thingspeak <br>
++Glitch <br>
  
 
 ## Project Repository
