@@ -1,3 +1,6 @@
+![Static Badge](https://img.shields.io/badge/Noemi_Lovei-pink)
+
+
 # Project Title
  HR Clocking System
 
@@ -117,5 +120,3 @@ N/A
 # Contact Information
 Noemi Lovei 
 20108892@mail.wit.ie 
-
-![alt text](https://img.shields.io/badge/Noemi%20?color=pink " " )
