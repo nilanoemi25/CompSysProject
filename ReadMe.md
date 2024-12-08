@@ -104,6 +104,5 @@ You will need:
 6. Near the RFID reader is the motion sensor, hold ALT to activate the sensor. 
 7. Notice the Raspberry PI turn green and real time data print in the terminal. 
 
-For step 4: 
 
-https://github.com/nilanoemi25/CompSysProject/blob/main/Miscellaneous/Img/packetTracer.PNG
+![alt text](https://github.com/nilanoemi25/CompSysProject/blob/main/Miscellaneous/Img/packetTracer.PNG "For step 4") 
