@@ -63,6 +63,8 @@ Most importantly the data gathered from the Rasberry PI button press input, can 
 
 The photo taken is stored on Glitch platform, full gallery accessible here: <br> https://glitch.com/~gentle-calico-nautilus
 
+
+
 Of all the data gathered **humidity**, **temperature** and the **photo** are sent to Blynk platform. This makes it more user friendly for the HR professional to access the data in contrast to the MyMQTT app. 
 A push notification is enabled for each employee clock in on the mobile phone. 
 
@@ -83,10 +85,10 @@ The restAPIs trigger different websites with templates, styled with some CSS, lo
 # How to Install / Run the project
 
 You will need:
-+Raspberry PI
-+Sensehat
-+Camera for Raspberry PI
-+Desktop
++ Raspberry PI
++ Sensehat
++ Camera for Raspberry PI
++ Desktop
 
 ## HTTP
 
@@ -113,12 +115,18 @@ You will need:
 6. Near the RFID reader is the motion sensor, hold ALT to activate the sensor. 
 7. Notice the Raspberry PI turn green and real time data print in the terminal. 
 
-
+For Step 4:
 ![alt text](https://github.com/nilanoemi25/CompSysProject/blob/main/Miscellaneous/Img/packetTracer.PNG "For step 4") <br>
+For Step 5:
 ![alt text](https://github.com/nilanoemi25/CompSysProject/blob/main/Miscellaneous/Img/script.PNG "For step 5")
 
 # Credits & Acknowledgements 
-SETU 2024 classmates & teachers
+SETU 2024 classmates & teachers <br>
+Badges:
+https://shields.io/badges <br>
+Github ReadMe Style:
+https://github.com/adam-p/markdown-here/wiki/markdown-cheatsheet <br>
+
 
 # Licence
 N/A
