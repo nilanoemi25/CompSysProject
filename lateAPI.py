@@ -109,22 +109,4 @@ app.run(host='0.0.0.0', port=5000, debug=True)
 #if __name__ == "__main__":
     # Example device ID and usage
 
-"""
-while True:
-    for event in sense.stick.get_events():
-        print(event.direction, event.action) 
-        if event.action == "pressed":
-            print("\nhour:", result.tm_hour) 
-            print("minute:", result.tm_min)      
-            if is_ontime:
-                sense.show_message("Ontime", text_colour=green)
-                message="Ontime"
-            else:
-                sense.show_message("Late", text_colour=red)
-                message="Late"   
-            
-    
-    time.sleep(16)  # Slight delay to avoid high CPU usage
-    
 
-""" 
