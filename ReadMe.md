@@ -23,15 +23,15 @@ This allows the HR professional to get clock in punches and their information to
 Employee ID and employeeName are taken from the employee_data(base). <br>
 
 ### List of values:
-+"deviceID"
-+"temp"
-+"humidity"
-+"employee"
-+"employeeId"
-+"weather_condition"
-+"time_keeping" 
-+"current_time"
-+"URL" 
++ "deviceID" 
++ "temp"
++ "humidity"
++ "employee"
++ "employeeId"
++ "weather_condition"
++ "time_keeping" 
++ "current_time"
++ "URL" 
 
 
 ## HTTP:
@@ -42,17 +42,17 @@ Most importantly the data gathered from the Rasberry PI button press input, can 
 
 ### List of values:
 
-+'field1': temperature,
-+'field2': humidity,
-+'field3': weather_condition,
-+'field4': employeeId,
-+'field5': employee,
-+'field6': is_ontime, 
-+'field7': urlString
++ 'field1': temperature,
++ 'field2': humidity,
++ 'field3': weather_condition,
++ 'field4': employeeId,
++ 'field5': employee,
++ 'field6': is_ontime, 
++ 'field7': urlString
 
 ***
 
-The photo taken is stored on Glitch platform, full gallery accessible here: [https://glitch.com/~gentle-calico-nautilus]
+The photo taken is stored on Glitch platform, full gallery accessible here: <br> https://glitch.com/~gentle-calico-nautilus
 
 Of all the data gathered **humidity**, **temperature** and the **photo** are sent to Blynk platform. This makes it more user friendly for the HR professional to access the data in contrast to the MyMQTT app. 
 A push notification is enabled for each employee clock in on the mobile phone. 
