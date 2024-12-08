@@ -105,4 +105,17 @@ You will need:
 7. Notice the Raspberry PI turn green and real time data print in the terminal. 
 
 
-![alt text](https://github.com/nilanoemi25/CompSysProject/blob/main/Miscellaneous/Img/packetTracer.PNG "For step 4") 
+![alt text](https://github.com/nilanoemi25/CompSysProject/blob/main/Miscellaneous/Img/packetTracer.PNG "For step 4") <br>
+![alt text](https://github.com/nilanoemi25/CompSysProject/blob/main/Miscellaneous/Img/script.PNG "For step 5")
+
+# Credits & Acknowledgements 
+SETU 2024 classmates & teachers
+
+# Licence
+N/A
+
+# Contact Information
+Noemi Lovei 
+20108892@mail.wit.ie 
+
+https://img.shields.io/badge/Noemi%20?color=pink
