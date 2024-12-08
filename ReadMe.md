@@ -1,4 +1,10 @@
 ![Static Badge](https://img.shields.io/badge/Noemi_Lovei-pink)
+![Static Badge](https://img.shields.io/badge/Software_Student-SETU_2024-blue)
+![Static Badge](https://img.shields.io/badge/Computer_Systems_Project-2024-red)
+![Static Badge](https://img.shields.io/badge/HTTP-green)
+![Static Badge](https://img.shields.io/badge/MQTT-purple)
+![Static Badge](https://img.shields.io/badge/Python-green)
+
 
 
 # Project Title
