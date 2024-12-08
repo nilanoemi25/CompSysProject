@@ -98,7 +98,7 @@ You will need:
 1. Download the Packet Tracer File from this github.
 2. Run the file.
 3. Wait for the connection to set up among all devices in the network. Ensure that both door and RFID reader are red. 
-4. (If door is not locked, go to Web Server, IOT Monitor and turn the door to locked).
+4. (If door is not locked, go to Web Server, IOT Monitor and turn the door to locked). You may need to login using the IP address of the Webserver and admin/root user/password.
 5. Go to Raspberry PI and run the script.
 5. Bring the 1001 card over the RFID reader and watch as it and the door turn green.
 6. Near the RFID reader is the motion sensor, hold ALT to activate the sensor. 
