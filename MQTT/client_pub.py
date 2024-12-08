@@ -9,11 +9,14 @@ sys.path.insert(0, '../')
 from employee_data import get_employee_data
 from camera_test import capture_image
 from upload_image import upload_image
+import BlynkLib
 
 sense = SenseHat()
 sense.clear()
 
 IMAGE_PATH="../images/sensehat_image.jpg"
+BLYNK_AUTH = 'z275UI1-xYpfjeR4JM-TroJ1R4l28_HN'
+blynk = BlynkLib.Blynk(BLYNK_AUTH)
 
 # parse mqtt url for connection details. DON'T FORGET TO UPDATE YOUR_ID TO A UNIQUE ID
 URL = urlparse("mqtt://broker.emqx.io:1883/nilanoemi25/home")
@@ -57,6 +60,7 @@ while True:
         print(event.direction, event.action) 
         if event.action == "pressed":
             capture_image(IMAGE_PATH)
+            blynk.log_event("clockin")
             msgFromClient = get_employee_data(DEVICE_ID)
             mqttc.publish(f"{BASE_TOPIC}/environment",str(msgFromClient))
 

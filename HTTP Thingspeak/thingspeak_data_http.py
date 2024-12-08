@@ -6,12 +6,14 @@ import time
 from employee_data import get_employee_data
 from camera_test import capture_image
 from upload_image import upload_image
+import BlynkLib
 
 deviceID="NoemisPi"
 sense = SenseHat()
 sense.clear()
 IMAGE_PATH="../images/sensehat_image.jpg"
-
+BLYNK_AUTH = 'z275UI1-xYpfjeR4JM-TroJ1R4l28_HN'
+blynk = BlynkLib.Blynk(BLYNK_AUTH)
 
 # Define colours for SBC
 green = (0, 255, 0)  
@@ -50,6 +52,8 @@ while True:
         if event.action == "pressed":
          capture_image(IMAGE_PATH)
          print("Image captured using SenseHAT button")
+
+         blynk.log_event("clockin")
 
          deviceId= "anydevice"
          data = get_employee_data(deviceId)
