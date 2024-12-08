@@ -71,4 +71,36 @@ The restAPIs trigger different websites with templates, styled with some CSS, lo
 /sensehat/punctualpost<br>
 /sensehat/greenlight<br>
 
+# How to Install / Run the project
+
+You will need:
++Raspberry PI
++Sensehat
++Camera for Raspberry PI
++Desktop
+
+## HTTP
+
+1. SSH from Desktop into Raspberry PI. 
+2. Download from github and run thingspeak_data_http.py from Terminal using the python command.
+3. Click the button on Raspberry PI to start the process.
+4. View data collected in Thingspeak Webdashboard and Blynk Webdashboard /app. 
+
+## MQTT
+
+1. SSH from Desktop into Raspberry PI. 
+2. Download from github and run client_pub.py from Terminal using python command.
+3. Click the button on Raspberry PI to start the process.
+4. Check MyMQTT app or run client_sub.py script to receive the subscriber messages. 
+
+## PacketTracer
+
+1. Download the Packet Tracer File from this github.
+2. Run the file.
+3. Wait for the connection to set up among all devices in the network. Ensure that both door and RFID reader are red. 
+4. (If door is not locked, go to Web Server, IOT Monitor and turn the door to locked).
+5. Go to Raspberry PI and run the script.
+5. Bring the 1001 card over the RFID reader and watch as it and the door turn green.
+6. Near the RFID reader is the motion sensor, hold ALT to activate the sensor. 
+7. Notice the Raspberry PI turn green and real time data print in the terminal. 
 
