@@ -7,6 +7,9 @@ from employee_data import get_employee_data
 from camera_test import capture_image
 from upload_image import upload_image
 import BlynkLib
+import json 
+
+with open('../udp_data.json', 'r') as file: udp_data = json.load(file)
 
 deviceID="NoemisPi"
 sense = SenseHat()
@@ -34,7 +37,6 @@ def send_to_thingspeak(temperature,humidity,weather_condition,employeeId,employe
         'field5': employee,
         'field6': is_ontime, 
         'field7': urlString,
-
     }
   
     response = requests.get(THINGSPEAK_CHANNEL_URL, params=payload)
@@ -59,11 +61,13 @@ while True:
          data = get_employee_data(deviceId)
          temperature = data['temp']
          humidity = data['humidity']
-         employeeId = data['employeeId']
+         #employeeId = data['employeeId']
          employee = data['employee']
          is_ontime = data['time_keeping']
          weather_condition = data['weather_condition']
          urlString=data['URL']
+
+         employeeId = int(udp_data[0]["message"]) # not sure about this - I think I need a second thingspeak file
   
          print(f"Temperature: {temperature} C")
          print(f"Humidity: {humidity} ")

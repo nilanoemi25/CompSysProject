@@ -61,8 +61,9 @@ Most importantly the data gathered from the Rasberry PI button press input, can 
 
 ***
 
-The photo taken is stored on Glitch platform, full gallery accessible here: <br> https://glitch.com/~gentle-calico-nautilus
+The photo taken is stored on Glitch platform, full gallery accessible here: <br> https://glitch.com/~gentle-calico-nautilus <br>
 
+![alt text](https://github.com/nilanoemi25/CompSysProject/blob/main/Miscellaneous/Img/glitch.PNG "Glitch") <br>
 
 
 Of all the data gathered **humidity**, **temperature** and the **photo** are sent to Blynk platform. This makes it more user friendly for the HR professional to access the data in contrast to the MyMQTT app. 
@@ -121,11 +122,11 @@ For Step 5:
 ![alt text](https://github.com/nilanoemi25/CompSysProject/blob/main/Miscellaneous/Img/script.PNG "For step 5")
 
 # Credits & Acknowledgements 
-SETU 2024 classmates & teachers <br>
-Badges:
-https://shields.io/badges <br>
-Github ReadMe Style:
-https://github.com/adam-p/markdown-here/wiki/markdown-cheatsheet <br>
+SETU 2024 classmates & teachers <br> 
+Badges:<br> 
+https://shields.io/badges <br> 
+Github ReadMe Style:<br> 
+https://github.com/adam-p/markdown-here/wiki/markdown-cheatsheet <br> 
 
 
 # Licence
