@@ -2,6 +2,20 @@ import socket
 import threading
 import json
 import time 
+from sense_hat import SenseHat
+
+sense = SenseHat()
+sense.clear()
+
+temp = sense.get_temperature()
+humidity = sense.get_humidity()
+
+flag="default"
+if humidity > 15 and temp < 35:
+    flag = "It's probably raining today.Employees may be late due to adverse weather conditions."
+else:
+     flag = "The weather looks good today. Employees have no excuse to be late."
+
 
 current_time = time.strftime("%H:%M:%S", time.gmtime())
 
@@ -38,7 +52,7 @@ class SensorListener:
                     print(f"Received data: {data.decode()} from {address}")
 
                      #Append received message to the list 
-                    data_list.append({"message": message, "address": address, "time_stamp":current_time})
+                    data_list.append({"message": message, "address": address, "time_stamp":current_time, "temperature":temp, "humidity":humidity, "flag":flag})
                      # Write the data list to a JSON file 
                     with open("udp_data.json", "w") as json_file: json.dump(data_list, json_file, indent=4)
     

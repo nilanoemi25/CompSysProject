@@ -55,7 +55,7 @@ emp_db = ''' {
             "start_time": 17
           },
           {
-            "name": "Could be Anyone",
+            "name": "Guest",
             "emp_id": 9999,
             "start_time": "NULL"
           }
@@ -95,6 +95,8 @@ def get_employee_data(deviceID):
     urlString = url.replace("http://", "hxxp://") #Changing URL to allow it to upload to Thingspeak, CSV file, field 7
 
     blynk.set_property(4,"urls", url)
+
+#Logic for button press on Rasb Pi timekeeping:
 
     is_ontime = True
     seconds = time.time()

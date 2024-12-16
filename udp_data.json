@@ -1,18 +1,13 @@
 [
     {
-        "message": "1002",
+        "message": "1118",
         "address": [
             "192.168.0.224",
-            55605
+            50946
         ],
-        "time_stamp": "19:59:46"
-    },
-    {
-        "message": "1001",
-        "address": [
-            "192.168.0.224",
-            55605
-        ],
-        "time_stamp": "19:59:46"
+        "time_stamp": "19:21:30",
+        "temperature": 38.2268180847168,
+        "humidity": 24.427730560302734,
+        "flag": "The weather looks good today. Employees have no excuse to be late."
     }
 ]
