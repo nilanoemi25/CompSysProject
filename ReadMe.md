@@ -70,11 +70,21 @@ Of all the data gathered **humidity**, **temperature** and the **photo** are sen
 A push notification is enabled for each employee clock in on the mobile phone. 
 
 # Secondly: <br>
+
+## Version 1 <br>
 The Raspberry PI is linked to Packet Tracer with a network that has an RFID reader and an entrance door. <br>
 I faced challenges retrieving data gathered via the RFID reader from the Iot Manager(Web Server) and so I placed the motion sensor next to the door/RFID reader and got information from the motion sensor instead. <br>
 Next the motion sensor is activated. ( must be activted with ALT ).<br>
 The idea is that when the employee walks in the door (IOT Manager fully set up in Packet Tracer), having successfully passed through the RFID validation the motion sensor actuates the Raspberry PI, which will light up in green AND print all relevant information (temp, humidity, employeeName, employeeId, **currentime stamp**, late/ontime) to the terminal, using the POST API. <br>
 
+## Version 2 <br>
+The Raspberry PI is linked to Packet Tracer and the RFID reader uses UDP to send the cardID to the PI.  <br>
+The PI reads the temp, humidity and time stamp and sends this data along with RFID card ID to a JSON file.  <br>
+A HTTP thingspeak script reads in this data from the json file and uses logic to determine 1) the name of the employee and 2) whether the employee was late or ontime.  <br>
+Subsequently all this data is sent to ThingsSpeak platform, where it can be viewed and downloaded by the user.  <br>
+The data is also sent to Blynk app with notifications enabled. 
+
+# Additionally:  <br>
 The restAPIs trigger different websites with templates, styled with some CSS, logically diving the data that was gathered from the Raspberry PI.<br>
 ***
 /<br>
@@ -91,12 +101,12 @@ You will need:
 + Camera for Raspberry PI
 + Desktop
 
-## HTTP
+## HTTP 
 
 1. SSH from Desktop into Raspberry PI. 
 2. Download from github and run thingspeak_data_http.py from Terminal using the python command.
 3. Click the button on Raspberry PI to start the process.
-4. View data collected in Thingspeak Webdashboard and Blynk Webdashboard /app. 
+4. View data collected in Thingspeak Web dashboard and Blynk Web dashboard /app. 
 
 ## MQTT
 
@@ -105,9 +115,9 @@ You will need:
 3. Click the button on Raspberry PI to start the process.
 4. Check MyMQTT app or run client_sub.py script to receive the subscriber messages. 
 
-## PacketTracer
+## PacketTracer Version 1
 
-1. Download the Packet Tracer File from this github.
+1. Download the "theproject.pkt" from this github.
 2. Run the file.
 3. Wait for the connection to set up among all devices in the network. Ensure that both door and RFID reader are red. 
 4. (If door is not locked, go to Web Server, IOT Monitor and turn the door to locked). You may need to login using the IP address of the Webserver and admin/root user/password.
@@ -115,6 +125,14 @@ You will need:
 5. Bring the 1001 card over the RFID reader and watch as it and the door turn green.
 6. Near the RFID reader is the motion sensor, hold ALT to activate the sensor. 
 7. Notice the Raspberry PI turn green and real time data print in the terminal. 
+
+## PacketTracer Version 2
+1. Download theproject_v2.pkt
+2. Run the file & make sure the RFID reader programme is running
+3. Bring the cards over the RFID reader and you will see the cardId printed in the terminal
+4. Download and run sensor_listener.py script on RasbPI. Now you will see the cardId from the RFID reader and additional data from PI be logged to a JSON script called udp_data.json
+5. Download and run udp_thingspeak_data_http.py from the HTTP Thingspeak folder and run it from the PI's terminal. 
+6. Observe the data sent to Thingspeak platform and Blynk app. 
 
 For Step 4:
 ![alt text](https://github.com/nilanoemi25/CompSysProject/blob/main/Miscellaneous/Img/packetTracer.PNG "For step 4") <br>
