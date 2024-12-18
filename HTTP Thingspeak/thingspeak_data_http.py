@@ -5,18 +5,18 @@ import requests
 import time
 from employee_data import get_employee_data
 from camera_test import capture_image
-from upload_image import upload_image
 import BlynkLib
 import json 
 
-with open('../udp_data.json', 'r') as file: udp_data = json.load(file)
+print("  ")
+print("Press the button on the PI to begin simulation of employee clock in.")
 
 deviceID="NoemisPi"
 sense = SenseHat()
 sense.clear()
-IMAGE_PATH="../images/sensehat_image.jpg"
-BLYNK_AUTH = 'z275UI1-xYpfjeR4JM-TroJ1R4l28_HN'
-blynk = BlynkLib.Blynk(BLYNK_AUTH)
+#IMAGE_PATH="../images/sensehat_image.jpg"
+#BLYNK_AUTH = 'z275UI1-xYpfjeR4JM-TroJ1R4l28_HN'
+#blynk = BlynkLib.Blynk(BLYNK_AUTH)
 
 # Define colours for SBC
 green = (0, 255, 0)  
@@ -52,6 +52,9 @@ while True:
     for event in sense.stick.get_events():
         print(event.direction, event.action) 
         if event.action == "pressed":
+         IMAGE_PATH="../images/sensehat_image.jpg"
+         BLYNK_AUTH = 'z275UI1-xYpfjeR4JM-TroJ1R4l28_HN'
+         blynk = BlynkLib.Blynk(BLYNK_AUTH)
          capture_image(IMAGE_PATH)
          print("Image captured using SenseHAT button")
 
@@ -61,13 +64,12 @@ while True:
          data = get_employee_data(deviceId)
          temperature = data['temp']
          humidity = data['humidity']
-         #employeeId = data['employeeId']
+         employeeId = data['employeeId']
          employee = data['employee']
          is_ontime = data['time_keeping']
          weather_condition = data['weather_condition']
          urlString=data['URL']
 
-         employeeId = int(udp_data[0]["message"]) # not sure about this - I think I need a second thingspeak file
   
          print(f"Temperature: {temperature} C")
          print(f"Humidity: {humidity} ")
