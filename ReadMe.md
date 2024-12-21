@@ -13,7 +13,7 @@
 # Project Description 
 This project is 40% of CompSys module in semester two, year 1 Hdip in SETU. 
 
-The purpose of this project is to explore different tools that a HR Assistant may use in office to track employee attendance/time-keeping. <br>
+The purpose of this project is to explore different ways that a HR Assistant may get the information about employee time keeping.<br>
 
 # Firstly: <br>
 On Raspberry PI the physical trigger is to press **button** to simulate 'clock in punch'. <br>
@@ -32,21 +32,20 @@ This allows the HR professional to get clock in punches and their information to
 Employee ID and employeeName are taken from the employee_data(base). <br>
 
 ### List of values:
-+ "deviceID" 
++ "deviceId"
 + "temp"
 + "humidity"
 + "employee"
 + "employeeId"
-+ "weather_condition"
++ "weather_condition" 
 + "time_keeping" 
-+ "current_time"
-+ "URL" 
++ "URLString" 
 
 
 ## HTTP:
 Data is sent to Thingspeak platform using HTTP protocol. <br>
 The Thingspeak platform visualises the temperature and humidity which are integers on it's dashboard.<br>
-An EmailHR React App is in place that will send an email to HR professional IF any employee is late. ( Only first lateness emailed in assignment to prevent too many emails.)<br>
+An EmailHR React App is in place that will send an email to HR professional IF any employee is late.<br>
 Most importantly the data gathered from the Rasberry PI button press input, can be downloaded as an CSV file by HR professional where all fields (not just integers but strings also) can be used in office for deep diving.  <br>
 
 ### List of values:
@@ -57,7 +56,8 @@ Most importantly the data gathered from the Rasberry PI button press input, can 
 + 'field4': employeeId,
 + 'field5': employee,
 + 'field6': is_ontime, 
-+ 'field7': urlString
++ 'field7': is_ontime_numeric, 
++ 'field8': urlString
 
 ***
 
@@ -70,14 +70,6 @@ Of all the data gathered **humidity**, **temperature** and the **photo** are sen
 A push notification is enabled for each employee clock in on the mobile phone. 
 
 # Secondly: <br>
-
-## Version 1 <br>
-The Raspberry PI is linked to Packet Tracer with a network that has an RFID reader and an entrance door. <br>
-I faced challenges retrieving data gathered via the RFID reader from the Iot Manager(Web Server) and so I placed the motion sensor next to the door/RFID reader and got information from the motion sensor instead. <br>
-Card1001 can access the door. Card1002 is not allowed access via the door. Next the motion sensor is activated. ( must be activted with ALT ).<br>
-The idea is that when the employee walks in the door (IOT Manager fully set up in Packet Tracer), having successfully passed through the RFID validation the motion sensor actuates the Raspberry PI, which will light up in green AND print all relevant information (temp, humidity, employeeName, employeeId, **currentime stamp**, late/ontime) to the terminal, using the POST API. <br>
-
-## Version 2 <br>
 The Raspberry PI is linked to Packet Tracer and the RFID reader uses UDP to send the cardID to the PI.  <br>
 The PI reads the temp, humidity and time stamp and sends this data along with RFID card ID to a JSON file.  <br>
 A HTTP thingspeak script reads in this data from the json file and uses logic to determine 1) the name of the employee and 2) whether the employee was late or ontime.  <br>
@@ -99,7 +91,7 @@ You will need:
 + Raspberry PI
 + Sensehat
 + Camera for Raspberry PI
-+ Desktop
++ Computer
 
 ## HTTP 
 
@@ -115,19 +107,8 @@ You will need:
 3. Click the button on Raspberry PI to start the process.
 4. Check MyMQTT app or run client_sub.py script to receive the subscriber messages. 
 
-## PacketTracer Version 1
 
-1. Download the "theproject.pkt" from this github.
-2. Run the file.
-3. Wait for the connection to set up among all devices in the network. Ensure that both door and RFID reader are red. 
-4. (If door is not locked, go to Web Server, IOT Monitor and turn the door to locked). You may need to login using the IP address of the Webserver and admin/root user/password.
-5. Go to Raspberry PI and run the lateAPI.py script.
-5. Bring the 1001 card over the RFID reader and watch as it and the door turn green.
-6. Click on the SBC linked to the motion sensor and run the programme. 
-6. Near the RFID reader is the motion sensor, hold ALT to activate the sensor. 
-7. Notice the Raspberry PI turn green and real time data print in the terminal. 
-
-## PacketTracer Version 2
+## PacketTracer 
 1. Download theproject_v2.pkt
 2. Run the file & make sure the RFID reader programme is running
 3. Bring the cards over the RFID reader and you will see the cardId printed in the terminal
@@ -137,8 +118,7 @@ You will need:
 
 For Step 4:
 ![alt text](https://github.com/nilanoemi25/CompSysProject/blob/main/Miscellaneous/Img/packetTracer.PNG "For step 4") <br>
-For Step 5:
-![alt text](https://github.com/nilanoemi25/CompSysProject/blob/main/Miscellaneous/Img/script.PNG "For step 5")
+
 
 # Credits & Acknowledgements 
 SETU 2024 classmates & teachers <br> 
