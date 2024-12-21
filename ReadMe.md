@@ -41,7 +41,7 @@ Employee ID and employeeName are taken from the employee_data(base). <br>
 + "time_keeping" 
 + "URLString" 
 
-![alt text](https://github.com/nilanoemi25/CompSysProject/blob/main/Miscellaneous/Img/MQTT.PNG "MQTT on app") <br>
+![alt text](https://github.com/nilanoemi25/CompSysProject/blob/main/Miscellaneous/Img/MQTT.png "MQTT on app") <br>
 
 
 ## HTTP:
@@ -50,7 +50,7 @@ The Thingspeak platform visualises the temperature and humidity which are intege
 An EmailHR React App is in place that will send an email to HR professional IF any employee is late.<br>
 Most importantly the data gathered from the Rasberry PI button press input, can be downloaded as an CSV file by HR professional where all fields (not just integers but strings also) can be used in office for deep diving.  <br>
 
-![alt text](https://github.com/nilanoemi25/CompSysProject/blob/main/Miscellaneous/Img/late_employees.PNG "MQTT on app") <br>
+![alt text](https://github.com/nilanoemi25/CompSysProject/blob/main/Miscellaneous/Img/late_employees.png "MQTT on app") <br>
 
 ### List of values:
 
@@ -73,7 +73,7 @@ The photo taken is stored on Glitch platform, full gallery accessible here: <br>
 Of all the data gathered **humidity**, **temperature** and the **photo** are sent to Blynk platform. This makes it more user friendly for the HR professional to access the data in contrast to the MyMQTT app. 
 A push notification is enabled for each employee clock in on the mobile phone. 
 
-![alt text](https://github.com/nilanoemi25/CompSysProject/blob/main/Miscellaneous/Img/push_notification.PNG "MQTT on app") <br>
+![alt text](https://github.com/nilanoemi25/CompSysProject/blob/main/Miscellaneous/Img/push_notification.png "MQTT on app") <br>
 
 # Secondly: <br>
 The Raspberry PI is linked to Packet Tracer and the RFID reader uses UDP to send the cardID to the PI.  <br>
@@ -121,9 +121,6 @@ You will need:
 4. Download and run sensor_listener.py script on RasbPI. Now you will see the cardId from the RFID reader and additional data from PI be logged to a JSON script called udp_data.json
 5. Download and run udp_thingspeak_data_http.py from the HTTP Thingspeak folder and run it from the PI's terminal. 
 6. Observe the data sent to Thingspeak platform and Blynk app. 
-
-For Step 4:
-![alt text](https://github.com/nilanoemi25/CompSysProject/blob/main/Miscellaneous/Img/packetTracer.PNG "For step 4") <br>
 
 
 # Credits & Acknowledgements 
