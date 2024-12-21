@@ -2,7 +2,6 @@ from flask import Flask, request, render_template
 from flask_cors import CORS
 from sense_hat import SenseHat
 import time
-from employee_data import get_employee_data
 
 #curl -X POST "http://IP:PORT/"
 
@@ -50,7 +49,7 @@ def current_punctual():
  is_ontime = True
  seconds = time.time()
  result = time.localtime(seconds) 
- if result.tm_min > 3 and result.tm_min < 59 and result.tm_min != 0:
+ if result.tm_min > 5 and result.tm_min < 59 and result.tm_min != 0:
         is_ontime = False  
  if is_ontime:
     status = "Ontime"
@@ -71,28 +70,6 @@ def message_post():
     else: 
         sense.show_message("Late", text_colour=red)
         return '{"state":"False"}'
-
-@app.route('/sensehat/greenlight',methods=['POST'])
-def light_post():
-    state=request.args.get('state')
-    seconds = time.time()
-    result = time.localtime(seconds) 
-
-    data = get_employee_data(deviceId)
-    employee = data['employee']
-    is_ontime = data['time_keeping']
-    temperature = data['temp']
-    humidity = data['humidity']
-    employeeId = data['employeeId']
-    weather_condition = data['weather_condition']
-
-    print (state)
-    if (state=="on"):
-        sense.clear(0,255,0)
-        return {"state":"on", "result":time.strftime("%Y-%m-%d %H:%M:%S", result), "is_ontime": is_ontime, "employeeName":employee, "temperature":temperature, "humidity":humidity, "employeeId": employeeId, "weather condition today": weather_condition}    
-    else: 
-        sense.clear(0,0,0)
-        return {"state":"off"}
 
 
 @app.route('/') 

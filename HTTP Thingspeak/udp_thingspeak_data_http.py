@@ -84,7 +84,7 @@ def get_employee(employeeId):
 def get_timekeeping(time_stamp):
 
   # start_time = "09:00:00"
-   grace_period = "09:04:00"
+   grace_period = "09:05:00"
    if time_stamp > grace_period:
        is_ontime = False
    return is_ontime

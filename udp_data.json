@@ -1,24 +1,24 @@
 [
     {
-        "message": "1118",
+        "message": "1119",
         "address": [
             "192.168.0.224",
-            56208
+            51929
         ],
-        "time_stamp": "12:09:55",
-        "temperature": 41.82325744628906,
-        "humidity": 23.99567985534668,
+        "time_stamp": "17:17:46",
+        "temperature": 38.4703254699707,
+        "humidity": 22.512413024902344,
         "flag": "The weather looks good today. Employees have no excuse to be late."
     },
     {
-        "message": "1116",
+        "message": "1117",
         "address": [
             "192.168.0.224",
-            56208
+            51929
         ],
-        "time_stamp": "12:09:55",
-        "temperature": 41.82325744628906,
-        "humidity": 23.99567985534668,
+        "time_stamp": "17:17:46",
+        "temperature": 38.4703254699707,
+        "humidity": 22.512413024902344,
         "flag": "The weather looks good today. Employees have no excuse to be late."
     }
 ]

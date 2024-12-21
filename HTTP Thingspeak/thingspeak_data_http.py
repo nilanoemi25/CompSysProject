@@ -26,7 +26,7 @@ THINGSPEAK_WRITE_API_KEY = "YQ2PNEN438H27L0G"
 THINGSPEAK_CHANNEL_URL = "https://api.thingspeak.com/update"
 
 # Function to send data to ThingSpeak
-def send_to_thingspeak(temperature,humidity,weather_condition,employeeId,employee,is_ontime, urlString):
+def send_to_thingspeak(temperature,humidity,weather_condition,employeeId,employee,is_ontime, is_ontime_numeric, urlString):
     payload = {
         'api_key': THINGSPEAK_WRITE_API_KEY,
         'field1': temperature,
@@ -35,7 +35,8 @@ def send_to_thingspeak(temperature,humidity,weather_condition,employeeId,employe
         'field4': employeeId,
         'field5': employee,
         'field6': is_ontime, 
-        'field7': urlString,
+        'field7': is_ontime_numeric,
+        'field8': urlString,
     }
   
     response = requests.get(THINGSPEAK_CHANNEL_URL, params=payload)
@@ -68,7 +69,7 @@ while True:
          is_ontime = data['time_keeping']
          weather_condition = data['weather_condition']
          urlString=data['URL']
-
+         is_ontime_numeric = 0 #FALSE
   
          print(f"Temperature: {temperature} C")
          print(f"Humidity: {humidity} ")
@@ -77,9 +78,11 @@ while True:
          print(f"Emp: {employee} ")
          print(f"WeatherCondition: {weather_condition} ")
          print(f"URL: {urlString} ")
+         print(f"is_ontime_numeric: {is_ontime_numeric}")
          
 
          if is_ontime:
+                is_ontime_numeric = 1 # TRUE 
                 message=f"{employee} Ontime"
                 sense.show_message(message, text_colour=green)               
          else:
@@ -87,7 +90,7 @@ while True:
                 sense.show_message(message, text_colour=red)
 
         # Send the data to ThingSpeak
-         send_to_thingspeak(temperature,humidity,weather_condition,employeeId,employee,is_ontime, urlString)   
+         send_to_thingspeak(temperature,humidity,weather_condition,employeeId,employee,is_ontime, is_ontime_numeric, urlString)   
          handle_v0_write("V0")
 
         elif event.action == "released":

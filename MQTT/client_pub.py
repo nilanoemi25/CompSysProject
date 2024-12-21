@@ -5,7 +5,7 @@ from urllib.parse import urlparse
 import time
 import sys 
 sys.path.insert(0, '../')
-from employee_data import get_employee_data
+from employee_data import *
 from camera_test import capture_image
 import BlynkLib
 
@@ -60,6 +60,7 @@ while True:
             capture_image(IMAGE_PATH)
             blynk.log_event("clockin")
             msgFromClient = get_employee_data(DEVICE_ID)
+            handle_v0_write("V0")
             mqttc.publish(f"{BASE_TOPIC}/environment",str(msgFromClient))
 
     time.sleep(15)
