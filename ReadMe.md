@@ -41,12 +41,16 @@ Employee ID and employeeName are taken from the employee_data(base). <br>
 + "time_keeping" 
 + "URLString" 
 
+![alt text](https://github.com/nilanoemi25/CompSysProject/blob/main/Miscellaneous/Img/MQTT.PNG "MQTT on app") <br>
+
 
 ## HTTP:
 Data is sent to Thingspeak platform using HTTP protocol. <br>
 The Thingspeak platform visualises the temperature and humidity which are integers on it's dashboard.<br>
 An EmailHR React App is in place that will send an email to HR professional IF any employee is late.<br>
 Most importantly the data gathered from the Rasberry PI button press input, can be downloaded as an CSV file by HR professional where all fields (not just integers but strings also) can be used in office for deep diving.  <br>
+
+![alt text](https://github.com/nilanoemi25/CompSysProject/blob/main/Miscellaneous/Img/late_employees.PNG "MQTT on app") <br>
 
 ### List of values:
 
@@ -68,6 +72,8 @@ The photo taken is stored on Glitch platform, full gallery accessible here: <br>
 
 Of all the data gathered **humidity**, **temperature** and the **photo** are sent to Blynk platform. This makes it more user friendly for the HR professional to access the data in contrast to the MyMQTT app. 
 A push notification is enabled for each employee clock in on the mobile phone. 
+
+![alt text](https://github.com/nilanoemi25/CompSysProject/blob/main/Miscellaneous/Img/push_notification.PNG "MQTT on app") <br>
 
 # Secondly: <br>
 The Raspberry PI is linked to Packet Tracer and the RFID reader uses UDP to send the cardID to the PI.  <br>
