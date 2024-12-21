@@ -89,52 +89,33 @@ def get_timekeeping(time_stamp):
        is_ontime = False
    return is_ontime
 
+capture_image(IMAGE_PATH)
+print("Image captured using SenseHAT button")
 
+blynk.log_event("clockin")
 
-while True:
- 
-    for event in sense.stick.get_events():
-        print(event.direction, event.action) 
-        if event.action == "pressed":
-         capture_image(IMAGE_PATH)
-         print("Image captured using SenseHAT button")
-
-         blynk.log_event("clockin")
-
-         deviceId= "anydevice"
-         data = get_employee_data(deviceId) # url = str(upload_image(IMAGE_PATH))
+deviceId= "anydevice"
+data = get_employee_data(deviceId) # url = str(upload_image(IMAGE_PATH))
                                          #urlString = url.replace("http://", "hxxp://")
 
-         #weather_condition = data['weather_condition']
-         urlString=data['URL']
+#weather_condition = data['weather_condition']
+urlString=data['URL']
 
-         employee = get_employee(employeeId)
-         is_ontime = get_timekeeping(time_stamp)
+employee = get_employee(employeeId)
+is_ontime = get_timekeeping(time_stamp)
          
 
-         print(f"Temperature: {temperature} C")
-         print(f"Humidity: {humidity} ")
-         print(f"Time Keeping: {is_ontime} ")
-         print(f"EmpId: {employeeId} ")
-         print(f"Emp: {employee} ")
-         print(f"WeatherCondition: {flag} ")
-         print(f"URL: {urlString} ")
+print(f"Temperature: {temperature} C")
+print(f"Humidity: {humidity} ")
+print(f"Time Keeping: {is_ontime} ")
+print(f"EmpId: {employeeId} ")
+print(f"Emp: {employee} ")
+print(f"WeatherCondition: {flag} ")
+print(f"URL: {urlString} ")
          
+# Send the data to ThingSpeak
+send_to_thingspeak(temperature,humidity,flag,employeeId,employee,is_ontime, urlString)   
 
-         if is_ontime:
-                message=f"{employee} Ontime"
-                sense.show_message(message, text_colour=green)               
-         else:
-                message=f"{employee} Late"   
-                sense.show_message(message, text_colour=red)
 
-        # Send the data to ThingSpeak
-         send_to_thingspeak(temperature,humidity,flag,employeeId,employee,is_ontime, urlString)   
-        
-        elif event.action == "released":
-         print("Action complete")
-
-      
-    # Wait before the next reading 
-    time.sleep(15)     
+     
             

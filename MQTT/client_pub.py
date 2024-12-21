@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 from sense_hat import SenseHat
-import requests
 import paho.mqtt.client as mqtt
 from urllib.parse import urlparse
 import time
@@ -8,7 +7,6 @@ import sys
 sys.path.insert(0, '../')
 from employee_data import get_employee_data
 from camera_test import capture_image
-from upload_image import upload_image
 import BlynkLib
 
 sense = SenseHat()

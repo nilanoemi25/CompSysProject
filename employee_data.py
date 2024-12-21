@@ -72,10 +72,25 @@ IMAGE_PATH="../images/sensehat_image.jpg"
 # Initialise the Blynk instance
 blynk = BlynkLib.Blynk(BLYNK_AUTH)
 
+# Initialize SenseHAT
+sense = SenseHat()
+
+# Register handler for virtual pin V1 write event
+@blynk.on("V0")
+def handle_v0_write(value):
+    button_value = value[0]
+    print(f'Current button value: {button_value}')
+    if button_value=="1":
+        sense.clear(255,255,255)
+    else:
+        sense.clear()
+    blynk.virtual_write(1, sense.temperature) 
+    blynk.virtual_write(2, sense.humidity) 
+    blynk.virtual_write(3, sense.pressure) 
+   
+
 def get_employee_data(deviceID):
-    # Initialize SenseHAT
-    sense = SenseHat()
-    
+  
     db = json.loads(emp_db)
     # I wont know which employee is clocking in. 
     
@@ -129,11 +144,12 @@ def get_employee_data(deviceID):
         employee = db['employees'][8]['name']
         employeeId = db['employees'][8]['emp_id']                     
     else:
-        employee="Could be anyone"
+        employee="Guest"
         employeeId="9999"
 
     if result.tm_min > 5 and result.tm_min < 59 and result.tm_min != 0:
         is_ontime = False 
+
     
     # Create a dictionary
     data = {
@@ -150,6 +166,8 @@ def get_employee_data(deviceID):
     }
     
     return data
+
+
 
 if __name__ == "__main__":
     get_employee_data("anydeviceId")

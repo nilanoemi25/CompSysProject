@@ -3,10 +3,9 @@ import sys
 sys.path.insert(0, '../')
 import requests
 import time
-from employee_data import get_employee_data
+from employee_data import *
 from camera_test import capture_image
 import BlynkLib
-import json 
 
 print("  ")
 print("Press the button on the PI to begin simulation of employee clock in.")
@@ -89,7 +88,8 @@ while True:
 
         # Send the data to ThingSpeak
          send_to_thingspeak(temperature,humidity,weather_condition,employeeId,employee,is_ontime, urlString)   
-        
+         handle_v0_write("V0")
+
         elif event.action == "released":
          print("Action complete")
 

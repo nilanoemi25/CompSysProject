@@ -1,57 +1,24 @@
 [
     {
-        "message": "1119",
+        "message": "1118",
         "address": [
             "192.168.0.224",
-            52153
+            56208
         ],
-        "time_stamp": "21:00:18",
-        "temperature": 39.23831558227539,
-        "humidity": 23.216623306274414,
+        "time_stamp": "12:09:55",
+        "temperature": 41.82325744628906,
+        "humidity": 23.99567985534668,
         "flag": "The weather looks good today. Employees have no excuse to be late."
     },
     {
         "message": "1116",
         "address": [
             "192.168.0.224",
-            52153
+            56208
         ],
-        "time_stamp": "21:00:18",
-        "temperature": 39.23831558227539,
-        "humidity": 23.216623306274414,
-        "flag": "The weather looks good today. Employees have no excuse to be late."
-    },
-    {
-        "message": "1117",
-        "address": [
-            "192.168.0.224",
-            52153
-        ],
-        "time_stamp": "21:00:18",
-        "temperature": 39.23831558227539,
-        "humidity": 23.216623306274414,
-        "flag": "The weather looks good today. Employees have no excuse to be late."
-    },
-    {
-        "message": "1118",
-        "address": [
-            "192.168.0.224",
-            52153
-        ],
-        "time_stamp": "21:00:18",
-        "temperature": 39.23831558227539,
-        "humidity": 23.216623306274414,
-        "flag": "The weather looks good today. Employees have no excuse to be late."
-    },
-    {
-        "message": "1114",
-        "address": [
-            "192.168.0.224",
-            52153
-        ],
-        "time_stamp": "21:00:18",
-        "temperature": 39.23831558227539,
-        "humidity": 23.216623306274414,
+        "time_stamp": "12:09:55",
+        "temperature": 41.82325744628906,
+        "humidity": 23.99567985534668,
         "flag": "The weather looks good today. Employees have no excuse to be late."
     }
 ]

@@ -74,7 +74,7 @@ A push notification is enabled for each employee clock in on the mobile phone.
 ## Version 1 <br>
 The Raspberry PI is linked to Packet Tracer with a network that has an RFID reader and an entrance door. <br>
 I faced challenges retrieving data gathered via the RFID reader from the Iot Manager(Web Server) and so I placed the motion sensor next to the door/RFID reader and got information from the motion sensor instead. <br>
-Next the motion sensor is activated. ( must be activted with ALT ).<br>
+Card1001 can access the door. Card1002 is not allowed access via the door. Next the motion sensor is activated. ( must be activted with ALT ).<br>
 The idea is that when the employee walks in the door (IOT Manager fully set up in Packet Tracer), having successfully passed through the RFID validation the motion sensor actuates the Raspberry PI, which will light up in green AND print all relevant information (temp, humidity, employeeName, employeeId, **currentime stamp**, late/ontime) to the terminal, using the POST API. <br>
 
 ## Version 2 <br>
@@ -121,8 +121,9 @@ You will need:
 2. Run the file.
 3. Wait for the connection to set up among all devices in the network. Ensure that both door and RFID reader are red. 
 4. (If door is not locked, go to Web Server, IOT Monitor and turn the door to locked). You may need to login using the IP address of the Webserver and admin/root user/password.
-5. Go to Raspberry PI and run the script.
+5. Go to Raspberry PI and run the lateAPI.py script.
 5. Bring the 1001 card over the RFID reader and watch as it and the door turn green.
+6. Click on the SBC linked to the motion sensor and run the programme. 
 6. Near the RFID reader is the motion sensor, hold ALT to activate the sensor. 
 7. Notice the Raspberry PI turn green and real time data print in the terminal. 
 
