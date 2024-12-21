@@ -5,8 +5,6 @@
 ![Static Badge](https://img.shields.io/badge/MQTT-purple)
 ![Static Badge](https://img.shields.io/badge/Python-green)
 
-
-
 # Project Title
  HR Clocking System
 
@@ -24,6 +22,12 @@ The temperature and humidity values are used to infer wether the weather is good
 Bad weather may be a valid excuse for lateness of an employee as it may cause commuting issues, traffic build up, accidents on the road etc <br>
 Good weather there is no excuse of lateness of an employee <br>
 The current time is measured against logic to determine whether the employee is late or ontime **at the button press.**<br>
+
+Thingspeak public url: https://thingspeak.mathworks.com/channels/2753624 <br><br>
+Glitch project url: https://glitch.com/~gentle-calico-nautilus <br><br>
+Blynk Generic url: https://blynk.io/ <br><br>
+
+![alt text](https://github.com/nilanoemi25/CompSysProject/blob/main/Miscellaneous/Img/blynk.png "MQTT on app") <br>
 
 ## MQTT:
 All of this information is linked with an MQTT protocol. The publishing is done via the client_pub.py script and the subscription can be via the client_sub.py script AND/OR via MQTT app on mobile. <br>
