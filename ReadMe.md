@@ -23,9 +23,12 @@ Bad weather may be a valid excuse for lateness of an employee as it may cause co
 Good weather there is no excuse of lateness of an employee <br>
 The current time is measured against logic to determine whether the employee is late or ontime **at the button press.**<br>
 
-Thingspeak public url: https://thingspeak.mathworks.com/channels/2753624 <br><br>
-Glitch project url: https://glitch.com/~gentle-calico-nautilus <br><br>
-Blynk Generic url: https://blynk.io/ <br><br>
+***
+
+Thingspeak public url: https://thingspeak.mathworks.com/channels/2753624 <br>
+Blynk Generic url: https://blynk.io/ <br>
+
+***
 
 ![alt text](https://github.com/nilanoemi25/CompSysProject/blob/main/Miscellaneous/Img/blynk.ng.PNG "MQTT on app") <br>
 
@@ -69,7 +72,7 @@ Most importantly the data gathered from the Rasberry PI button press input, can 
 
 ***
 
-The photo taken is stored on Glitch platform, full gallery accessible here: <br> https://glitch.com/~gentle-calico-nautilus <br>
+The photos taken is stored on Glitch platform, full gallery accessible here: <br> https://glitch.com/~gentle-calico-nautilus <br>
 
 ![alt text](https://github.com/nilanoemi25/CompSysProject/blob/main/Miscellaneous/Img/glitch.PNG "Glitch") <br>
 
@@ -93,7 +96,6 @@ The restAPIs trigger different websites with templates, styled with some CSS, lo
 /sensehat/environment<br>
 /sensehat/punctual<br>
 /sensehat/punctualpost<br>
-/sensehat/greenlight<br>
 
 # How to Install / Run the project
 
