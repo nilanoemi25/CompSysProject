@@ -27,7 +27,7 @@ Thingspeak public url: https://thingspeak.mathworks.com/channels/2753624 <br><br
 Glitch project url: https://glitch.com/~gentle-calico-nautilus <br><br>
 Blynk Generic url: https://blynk.io/ <br><br>
 
-![alt text](https://github.com/nilanoemi25/CompSysProject/blob/main/Miscellaneous/Img/blynk.png "MQTT on app") <br>
+![alt text](https://github.com/nilanoemi25/CompSysProject/blob/main/Miscellaneous/Img/blynk.ng.PNG "MQTT on app") <br>
 
 ## MQTT:
 All of this information is linked with an MQTT protocol. The publishing is done via the client_pub.py script and the subscription can be via the client_sub.py script AND/OR via MQTT app on mobile. <br>
